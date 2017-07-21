@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schneckenrennen</title>
+</head>
+<body>
+
+<script>
+
+    /**
+     * Klasse Rennen
+     *
+     * @param {string} name Name des Rennens
+     * @param {number} laenge Länge der Rennstrecke
+     * @constructor
+     *
+     * @since 1.0.0
+     * @author Laura
+     */
+    var Rennen = function(name, laenge) {
+
+        /**
+         * Name des Rennens
+         *
+         * @type {string}
+         **/
+        this.name = name;
+
+        /**
+         * Länge der Rennstrecke
+         *
+         * @type {number}
+         **/
+        this.laenge = laenge;
+
+        /**
+         * Anzahl der Teilnehmer
+         *
+         * @type {number}
+         **/
+        this.anzahlTeilnehmer = 0;
+
+        /**
+         * Teilnehmer
+         *
+         * @type {Rennschnecke[]}
+         **/
+        this.teilnehmer = [];
+
+        /**
+         * Fügt eine Schnecke zu den Teilnehmern hinzu
+         *
+         * @param {Rennschnecke} schnecke Eine Schnecke
+         */
+        this.addRennschnecke = function(schnecke) {
+            this.teilnehmer.push(schnecke);
+            this.anzahlTeilnehmer++;
+        };
+
+        /**
+         * Entfernt eine Schnecke von den Teilnehmern
+         *
+         * @param {string} schneckenName Name einer Schnecke
+         */
+        this.removeRennschnecke = function(schneckenName) {
+            for (var i = 0; i < this.anzahlTeilnehmer; i++) {
+                var schnecke = this.teilnehmer[i];
+
+                if (schnecke.name == schneckenName) {
+                    this.teilnehmer.splice(i, 1);
+                    this.anzahlTeilnehmer--;
+                }
+            }
+        };
+
+        /**
+         * Gibt Schneckeninformationen zurück
+         *
+         * @returns {string} Infos der Schnecke
+         */
+        this.toString = function () {
+            var schneckenInfo = '';
+            for (var i = 0; i < this.anzahlTeilnehmer; i++) {
+                var schnecke = this.teilnehmer[i];
+                schneckenInfo = schneckenInfo + schnecke.toString() + '<br />';
+            }
+            return this.name + ' ' + this.laenge + ' ' + this.anzahlTeilnehmer + ' <br />' + schneckenInfo;
+        };
+
+        /**
+         * Stellt fest, ob es einen Gewinner gibt
+         *
+         * @returns {Rennschnecke|null} Gewinnerschnecke oder null
+         */
+        this.ermittleGewinner = function () {
+            for (var i = 0; i < this.anzahlTeilnehmer; i++) {
+                var schnecke = this.teilnehmer[i];
+                if (schnecke.position >= this.laenge) {
+                    return schnecke;
+                }
+            }
+
+            return null;
+        };
+
+        /**
+         * Lässt die Schnecken kriechen
+         */
+        this.lasseSchneckenKriechen = function () {
+            for ( var i = 0; i < this.anzahlTeilnehmer; i++) {
+                var schnecke = this.teilnehmer[i];
+                schnecke.krieche();
+            }
+        };
+
+        /**
+         * Führt das Rennen durch
+         */
+        this.durchfuehren = function () {
+            while (this.ermittleGewinner() == null) {
+                this.lasseSchneckenKriechen();
+            }
+        };
+    };
+
+    /**
+     * Klasse Rennschnecke
+     *
+     * @param {string} name Name der Rennschnecke
+     * @param {string} rasse Rasse der Rennschnecke
+     * @param {number} maximalgeschwindigkeit Maximale Geschwindigkeit der Rennschnecke
+     * @constructor
+     *
+     * @since 1.0.0
+     * @author Laura
+     */
+    var Rennschnecke = function(name, rasse, maximalgeschwindigkeit) {
+
+        /**
+         * Name der Rennschnecke
+         *
+         * @type {string}
+         **/
+        this.name = name;
+
+        /**
+         * Rasse der Rennschnecke
+         *
+         * @type {string}
+         **/
+        this.rasse = rasse;
+
+        /**
+         * Maximalgeschwindigkeit der Rennschnecke
+         *
+         * @type {number}
+         **/
+        this.maximalgeschwindigkeit = maximalgeschwindigkeit;
+
+        /**
+         * Position der Rennschnecke
+         *
+         * @type {number}
+         **/
+        this.position = 0;
+
+        /**
+         * Lässt die Schnecke kriechen und ändert die Position
+         */
+        this.krieche = function () {
+            var ergebnis = this.maximalgeschwindigkeit * Math.random();
+            this.position = this.position + ergebnis;
+        };
+
+        /**
+         * Gibt die Informationen der Schnecke zurück
+         *
+         * @returns {string}
+         */
+        this.toString = function () {
+            return this.name + ' ' + this.rasse + ' (' + this.maximalgeschwindigkeit + ') ' + this.position;
+        };
+    };
+
+    /**
+     * Klasse Wette
+     *
+     * @param {string} schneckenName Name der Rennschnecke
+     * @param {string} wettEinsatz Eingesetzter Wettbetrag
+     * @param {string} spieler Name des Spielers
+     * @constructor
+     *
+     * @since 1.0.0
+     * @author Laura
+     */
+    var Wette = function(schneckenName, wettEinsatz, spieler) {
+        this.schneckenName = schneckenName;
+        this.wettEinsatz = wettEinsatz;
+        this.spieler = spieler;
+    };
+
+    /**
+     * Klasse Wettbüro
+     *
+     * @param {string} rennen Informationen zum Rennen
+     * @param {string} faktor Faktor mit dem der Wetteinsatz faktorisiert wird
+     * @constructor
+     *
+     * @since 1.0.0
+     * @author Laura
+     */
+    var Wettbuero = function(rennen, faktor) {
+
+        /**
+         * Name des Rennens
+         *
+         * @type {string}
+         **/
+        this.rennen = rennen;
+
+        /**
+         * Zu berechnender Faktor für Wetteinsatz bei Gewinn
+         *
+         * @type {number}
+         **/
+        this.faktor = faktor;
+
+        /**
+         * Betreffende Wetten
+         *
+         * @type {Wette[]}
+         **/
+        this.wetten = [];
+
+        this.wetteAnnehmen = function (schneckenName, wettEinsatz, spieler) {
+            var wette = new Wette (schneckenName, wettEinsatz, spieler);
+            this.wetten.push(wette);
+        };
+
+        this.rennenDurchfuehren = function () {
+            this.rennen.durchfuehren();
+        };
+
+        this.toString = function () {
+            var wettinfo = '';
+            for (var i = 0; i < this.wetten.length; i++) {
+                var wette = this.wetten[i];
+                wettinfo = wettinfo + wette.spieler + ' hat ' + wette.wettEinsatz + ' EUR auf ' + wette.schneckenName + ' gesetzt. <br />';
+            }
+            return 'Faktor: ' + this.faktor + '<br />' + this.rennen.toString() + '<br />' + wettinfo;
+        };
+
+        this.printGewinner = function () {
+            var sieger = this.rennen.ermittleGewinner();
+            for (var i = 0; i < this.wetten.length; i++) {
+                var wette = this.wetten[i];
+                if (wette.schneckenName == sieger.name) {
+                    document.write('Spieler ' + wette.spieler  + ' hat ' + (wette.wettEinsatz * this.faktor) + ' EUR gewonnen.')
+                }
+            }
+        }
+
+    };
+
+    var inge = new Rennschnecke('Inge', 'Weinbergschnecke1', 10);
+    var thomas = new Rennschnecke('Thomas', 'Weinbergschnecke2', 10);
+    var hans = new Rennschnecke('Hans', 'Weinbergschnecke3', 10);
+
+    document.write(inge.toString() + '<br />');
+
+    inge.krieche();
+    thomas.krieche();
+    hans.krieche();
+
+    document.write(inge.toString() + '<br />');
+
+    var nuerburg = new Rennen('Nürburgring', 1000);
+    nuerburg.addRennschnecke(inge);
+    nuerburg.addRennschnecke(thomas);
+    nuerburg.addRennschnecke(hans);
+
+    console.log(nuerburg.teilnehmer);
+
+    //  nuerburg.removeRennschnecke('Thomas');
+
+    console.log(nuerburg.teilnehmer);
+
+    console.log(nuerburg.anzahlTeilnehmer);
+
+    document.write(nuerburg.toString());
+
+    /*
+    nuerburg.durchfuehren();
+
+    var sieger = nuerburg.ermittleGewinner();
+
+    console.log(sieger);
+
+    document.write(sieger.toString());
+
+    */
+
+    var schulz = new Wettbuero(nuerburg, 3);
+
+    schulz.wetteAnnehmen('Inge', 10, 'Laura');
+    schulz.wetteAnnehmen('Thomas', 9, 'Thilo');
+    schulz.wetteAnnehmen('Hans', 8, 'Yves');
+
+    document.write(schulz.toString() + '<br />');
+
+    schulz.rennenDurchfuehren();
+
+    document.write(schulz.toString() + '<br />');
+
+    schulz.printGewinner();
+
+
+</script>
+
+</body>
+</html>
