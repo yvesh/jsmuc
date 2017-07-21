@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function printWort(wort) {
+		document.write(wort);
+	}
+
+	printWort('Hallo');
+	printWort(' ');
+	printWort('Welt');
+	printWort('<br />');
+
+	function addiere(zahl, zahl2) {
+		document.write(Number(zahl) + Number(zahl2));
+	}
+
+	addiere(20, 22);
+	printWort('<br />');
+
+	addiere('20', '22');
+	printWort('<br />');
+
+	// Rückgabe der Addition von zahl + zahl2
+	function getErgebnisAddition(zahl, zahl2) {
+		return Number(zahl) + Number(zahl2);
+	}
+
+	var ergebnis = getErgebnisAddition(20, 22);
+
+
+	// rechenart = +-*/
+	function getErgebnis(zahl, zahl2, rechenArt) {
+		if (isNaN(zahl) || isNaN(zahl2)) {
+			return -1;
+		}
+
+		if (rechenArt === '*') {
+			return zahl * zahl2;
+		}
+
+		if (rechenArt === '/') {
+			if (zahl2 === 0) {
+				return -1;
+			}
+
+			return zahl * zahl2;
+		}
+
+		if (rechenArt === '-') {
+			return zahl - zahl2;
+		}
+
+		// Nur bei Addition nötig
+		zahl = Number(zahl);
+		zahl2 = Number(zahl2);
+
+		return zahl + zahl2;
+	}
+
+	var erg = getErgebnis(10, 15, '*');
+
+	/**
+	 * Regeln zu Funktionen
+	 *
+	 * - Fangen klein an
+	 * - Groß-/Klein gilt wie immer
+	 * - Idr. beschreibt das erste Wort den Rückgabewert
+	 * - getZAHL getErgebnis
+	 * - isSinn, isChecked, isActive (true - false)
+	 * - camelCase
+	 *
+	 * - addiere -> getErgebnisAddition
+	 * - Verb wird in der Regel nur benutzt wenn es offensichtlich ist was die Funktion damit bezweckt
+	 * - sort() -> getSortedResult (NEIN, weil es den Array sortiert und nichts zurück gibt)
+	 */
+
+</script>
+
+</body>
+</html>

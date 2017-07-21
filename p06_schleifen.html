@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// Schleifen
+
+	// Init Zähler; Bedingung; Was geschehen soll
+	for (var i = 0; i < 10; i++) {
+		document.write('Durchlauf: ' + i + '<br />');
+	}
+
+	// ---------------
+	// Zähler
+	var i = 0;
+
+	// Bedingung - solange die TRUE ist läuft die Schleife weiter
+	while (i < 10)
+	{
+		document.write('Durchlauf: ' + i + '<br />');
+
+		i++;
+	}
+
+	/**
+	 * For Schleife: Wenn klar ist wie oft die Schleife läuft
+	 * While: Wenn es nicht klar ist
+	 */
+
+	// Wie oft die Zahl x mit Anfangswert 1000 durch 3 teilbar bis x kleiner 10 ist.
+
+
+	var x = 1000;
+	var counter = 0;
+
+	while (x > 9) {
+		x = x / 3;
+		counter++;
+	}
+
+	document.write('Ergebnis: ' + counter);
+
+	// 1 x 1 = 1
+	// 1 x 2 = 2
+
+	// 2 x 1 = 2
+	// 2 x 2 = 4
+
+	// 10 x 10 = 100
+
+	for (var i = 1; i < 11; i++) {
+		for (var j = 1; j < 11; j++) {
+			document.write(i + ' x ' + j + ' = ' + (i * j) + '<br />');
+		}
+	}
+
+	i = 42;
+
+	do
+	{
+		document.write('I = ' + i)
+	} while(i < 5);
+
+	// Die do while Schleife wird mindestens einmal ausgeführt
+
+</script>
+</body>
+</html>

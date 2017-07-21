@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+
+    <style>
+        .active {
+            font-weight: 900;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="tabs">
+    <div class="tabs-header">
+        <a href="#tab1" class="active">Tab 1</a>
+        <a href="#tab2">Tab 2</a>
+        <a href="#tab3">Tab 3</a>
+    </div>
+
+    <div class="tabs-body">
+        <div id="tab1">
+            Inhalt Tab 1
+        </div>
+        <div id="tab2">
+            Inhalt Tab 2
+        </div>
+        <div id="tab3">
+            Inhalt Tab 3
+        </div>
+    </div>
+</div>
+
+<script src="js/tabs.js">
+</script>
+<script>
+    // window.initTabs($('.tabs'));
+
+    $('.tabs').initTabs({
+        'test': 42
+    });
+</script>
+
+</body>
+</html>

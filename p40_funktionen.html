@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// Funktional
+	function printHalloWelt() {
+		document.write('Hallo Welt');
+	}
+
+	var test = 42;
+
+	var printPause = function() {
+		document.write('Pause');
+
+		// Aufruf einer Funktion aus einer Funktion
+		newLine();
+	};
+
+	function newLine() {
+		document.write('<br />');
+	}
+
+	printHalloWelt();
+	newLine();
+	printPause();
+
+	document.write(printHalloWelt);
+	newLine();
+	newLine();
+
+	// Undefined + FUNKTION wird aufgerufen
+	document.write(typeof printHalloWelt());
+	newLine();
+
+	// Function
+	document.write(typeof printHalloWelt);
+	newLine();
+</script>
+</body>
+</html>

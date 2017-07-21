@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="search-container">
+    <input type="text" placeholder="suchbegriff" id="search" />
+</div>
+
+<div id="table-container">
+    <table>
+        <thead>
+            <tr>
+               <th>Vorname</th>
+               <th>Nachname</th>
+               <th>Alter</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<script>
+    /**
+     *
+     * @param {string} url
+     * @param {object} data
+     * @param {functioncallback
+     */
+    function request(url, data, callback){
+        // Lade Dialog anzeigen
+
+        $.ajax(url, {
+            // Wir warten (js + browser) bis er fertig ist
+            async: false;
+        }, data, callback);
+
+        alert('test');
+    }
+
+
+    $('#search').keyup(function () {
+        var eingabe = $(this).val().toLowerCase();
+
+        console.log(eingabe);
+
+        var matches = [];
+
+        for (var i = 0; i < kunden.length; i++) {
+            var kunde = kunden[i];
+
+            if (kunde.vorname.toLowerCase().indexOf(eingabe) !== -1
+                || kunde.nachname.toLowerCase().indexOf(eingabe) !== -1) {
+                matches.push(kunde);
+            }
+        }
+
+        printTable(matches);
+    });
+
+    var reset = $('#table-container table').html();
+
+    function printTable(kunden) {
+        var $tableContainer = $('#table-container');
+
+        var html = reset;
+
+        for (var i = 0; i < kunden.length; i++) {
+            var kunde = kunden[i];
+
+            html += '<tr>';
+            html += '<td>';
+            html += kunde.vorname;
+            html += '</td>';
+            html += '<td>';
+            html += kunde.nachname;
+            html += '</td>';
+            html += '<td>';
+            html += kunde.alter;
+            html += '</td>';
+            html += '</tr>';
+        }
+
+        $('table', $tableContainer).html(html);
+    }
+
+    var kunden = [];
+
+    $.ajax('json.php', {
+        dataType: 'json',
+        method: 'post'
+    }).done(function(json){
+        kunden = json;
+        console.log(json);
+        printTable(json);
+    });
+</script>
+
+
+</body>
+</html>

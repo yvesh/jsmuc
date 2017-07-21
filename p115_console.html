@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test43"></div>
+
+<button id="test">Test</button>
+
+<script>
+    console.log('Guten Morgen');
+
+    document.write('Guten Morgen');
+
+    var Wettbuero = function() {
+        this.addWette = function (test) {
+            // NICHT HIEr
+            var wette = new Wette(test);
+        }
+    }
+    var Wette = function() {
+        this.test = '42';
+    }
+
+
+    var test = new Wette();
+
+    var buero = new Wettbuero();
+
+    // HIER muss Wette existieren
+    buero.addWette("test22");
+
+    function test42() {
+        console.log(a);
+    }
+    test42();
+
+    var a = 42;
+
+
+
+    document.getElementById('test').onclick = function () {
+        // NIE document.write im EVENT verwenden
+        // document.write('test 42');
+
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// If
+	var zahl = 13;
+
+	// Bedingung 1
+	if (zahl > 20) {
+		document.write('Zahl ist größer 20');
+	}
+
+	// Bedingung 2
+	if (zahl > 10) {
+		document.write('Zahl ist größer 10');
+	}
+
+	if (zahl == 10) {
+		document.write('Zahl ist 10');
+	} else if (zahl > 10) {
+		document.write('Zahl ist größer 20');
+	} else if (zahl == 13) {
+		document.write('Zahl ist 13');
+	} else {
+		document.write('Zahl ist nicht 10');
+	}
+
+	// Übung
+
+	var alter = 23;
+
+	// Tickets verkaufen, unter 18 dann Kinderpreis,
+	// ab 65 gibts einen Seniorenpreis, sonst Erwachsenen-ticket
+
+	// Schaltjahr
+	// -> immer durch 4 teilbar
+	// -> nicht durch 100, ausser auch durch 400,
+	// 1900 -> kein schaltjahr, 2000 -> war eins, 2400 ist auch eins
+	// 2016 -> Schaltjahr, 2017 -> nein
+
+	var jahr = 1900;
+
+	if (jahr % 4 != 0) {
+		// Kein Schaltjahr
+	} else if (jahr % 100 == 0 && jahr % 400 != 0) {
+		// Kein Schaltjahr
+	} else {
+		// Schaltjahr
+	}
+
+</script>
+
+</body>
+</html>

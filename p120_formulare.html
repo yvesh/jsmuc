@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulare</title>
+</head>
+<body>
+<form action="login.php" method="post" name="loginForm" id="loginForm">
+    <div id="error-message-container" style="background: lightcoral">
+    </div>
+    <div>
+        <input type="text" name="username" id="username" placeholder="Username"/>
+    </div>
+    <div>
+        <input type="password" name="password" id="password" placeholder="Password"/>
+    </div>
+    <div>
+        <input type="submit" value="Anmelden" id="btnSubmit" />
+        <button id="btnReset">Reset</button>
+    </div>
+</form>
+
+<script>
+    // console.log(document.loginForm.password);
+    console.log();
+
+    var inputUsername = document.getElementById('username');
+    var inputPassword = document.getElementById('password');
+
+    var errorContainer = document.getElementById('error-message-container');
+
+//    document.getElementById('loginForm').onsubmit = function(e) {
+//        e.preventDefault();
+//    }
+
+    var btnSubmit = document.getElementById('btnSubmit');
+    var btnReset = document.getElementById('btnReset');
+
+    // $('#username').val(); // Methode
+    // $('#username').val('test'); // Setzt das Value auf test
+
+    btnSubmit.onclick = function(e) {
+        // Nicht das Formular absenden
+        e.preventDefault();
+
+        // FehlerContainer leeren!
+        errorContainer.innerHTML = '';
+
+        // HTML von errorContainer auf test setzen
+        // $('#errorContainer').html('test');
+
+        var username = inputUsername.value;
+        var password = inputPassword.value;
+
+        var isValid = true;
+
+        if (username.length < 4) {
+            // Fehler
+            errorContainer.innerHTML += '<p>Bitte den Benutzernamen ausfüllen</p>';
+            isValid = false;
+        }
+
+        if (password.length < 6) {
+            // Fehler
+            errorContainer.innerHTML += '<p>Ungültiges Passwort</p>';
+            isValid = false;
+        }
+
+        if (!isValid) {
+            // Abbruch
+            return false;
+        }
+
+        document.getElementById('loginForm').submit();
+    };
+
+    btnReset.onclick = function(e) {
+        e.preventDefault();
+
+        errorContainer.innerHTML = '';
+
+        // Felder leeren
+        inputUsername.value = '';
+        inputPassword.value = '';
+    }
+
+
+</script>
+
+</body>
+</html>

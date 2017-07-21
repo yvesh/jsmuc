@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	var gewonnen = 0;
+
+	for (var i = 0; i < 10000000; i++) {
+		var zufall = Math.random();
+
+		if (zufall < 0.42) {
+			gewonnen++;
+		}
+	}
+
+	document.write('Gewonnen: ' + gewonnen);
+
+</script>
+</body>
+</html>

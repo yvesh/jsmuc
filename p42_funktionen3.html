@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function printHallo() {
+		// Lokale Variable
+		var hallo = 'Hallo';
+
+		var xyz = 42;
+
+		document.write(hallo);
+
+		// hallo + xyz verlieren ihre gültigkeit
+	}
+
+	printHallo();
+
+//	document.write(hallo);
+
+	document.write('<br />');
+
+
+	function printPi() {
+		document.write(pi);
+	}
+
+	// Die Variable pi ist zum AUFRUF nicht definiert
+	printPi();
+
+	// Zu spät!
+	var pi = 3.14159;
+
+
+</script>
+
+</body>
+</html>

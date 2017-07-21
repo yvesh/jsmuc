@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="http://muenchenticket.de">MuenchenTicket</a>
+<a href="http://cmt.de">CMT</a>
+<a href="http://bmw.de">BMW</a>
+<a href="http://audi.de">Audi</a>
+<hr />
+<script>
+    // Immer ein Array
+    var links = document.getElementsByTagName('a');
+
+    // Sucht innerhalb
+   // links.getElementsByClassName('b');
+
+    console.log(typeof links);
+
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+
+        // document.write(link.innerHTML + '<br />');
+
+        if (i % 2 !== 0) {
+            link.style.background = '#ccc';
+        }
+
+        // Text von BMW ändern?!
+        if (link.getAttribute('href').indexOf('bmw.de') !== -1) {
+            link.innerHTML = 'ERSETZT';
+        }
+
+        // Title Attribute einfügen
+        link.setAttribute('title', link.innerHTML.replace('\'', ''));
+    }
+
+</script>
+</body>
+</html>

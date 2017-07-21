@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// Nummerische Datentypen
+
+	// Name   Wert
+	var zahl = 42;
+
+	// Float / Double
+	var pi = 3.14159;
+
+	var zahl2 = 99999999999999999;
+
+	// Byte, Short, Int, Long, Float, Double
+
+	document.write(zahl);
+
+	document.write('<br />');
+	document.write(typeof zahl);
+
+	document.write('<br />');
+	document.write(typeof pi);
+
+	document.write(zahl2);
+	document.write('<br />');
+
+	document.write(Number.MIN_VALUE);
+	document.write('<br />');
+
+	document.write(Number.MAX_VALUE);
+	document.write('<br />');
+
+	document.write(0.5 + 0.5);
+	document.write('<br />');
+
+	document.write(0.5 + 0.3 + 0.2);
+	document.write('<br />');
+
+	var erg = 0.5 + 0.2;
+	var erg2 = erg + 0.21;
+
+	document.write(erg2);
+	document.write('<br />');
+
+	// Zeichenketten
+	var wort = 'Montag';
+
+	document.write(typeof wort);
+	document.write('<br />');
+
+	// Object
+	var date = new Date();
+
+	document.write(typeof date);
+	document.write('<br />');
+
+	// Boolean
+	var wahr = true;
+
+	document.write(typeof wahr);
+	document.write('<br />');
+
+	// NaN
+	// Array = Object
+	document.write(typeof ['a', 'b', 'c']);
+	document.write('<br />');
+
+	var func = function() {
+		alert('test');
+	};
+
+	document.write(typeof func);
+	document.write('<br />');
+
+	// '' -> string, 0 -> int, undefined
+	var nichts = null;
+
+	document.write(typeof nichts);
+	document.write('<br />');
+
+	// undefined
+	var sonstiges;
+
+	document.write(typeof sonstiges);
+	document.write('<br />');
+
+	document.write(sonstiges);
+	document.write('<br />');
+
+	/**
+	 * Wichtige Datentypen:
+	 *
+	 * - Number
+	 * - String
+	 * - Object
+	 * - Boolean
+	 * - Function
+	 * - undefined
+	 *
+	 *
+	 *
+	 */
+
+	var zahl1 = '21';
+	var zahl2 = '22';
+
+	// Casting
+	var ergebnis = Number(zahl1) + Number(zahl2);
+
+	// Umgekehrt
+	var ergebnis2 = '' + 21 + 22;
+
+	document.write(ergebnis);
+
+	var a99 = 'test';
+
+	var $test = 'test';
+
+	var btn_test;
+	var btnTest;
+
+	var testDiv2;
+
+	var $testDiv2;
+
+	/**
+	 * Konventionen / Regeln zu Variabeln:
+	 *
+	 * - Klein-/Großschreibung wird unterschrieben
+	 * - Variablen sollten immer klein anfangen*
+	 * - Variabeln können nicht mit Zahlen beginnen
+	 * - _$ sind erlaubt
+	 * - _ sollte nicht verwendet werden, stattdessen camelCase;
+	 * - Variable immer möglichst gut den Inhalt beschreiben
+	 */
+</script>
+
+<div id="test-div2">
+
+</div>
+</body>
+</html>

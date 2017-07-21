@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Klasse Auto
+                        // Konstruktor
+    /**
+     * Klasse Auto
+     * @param {string} hersteller
+     * @constructor
+     *
+     * @author  Yves Hoppe
+     * @since   1.0.0
+     */
+    var Auto = function(hersteller) {
+
+        // Instanzvariablen / Attribute / Properties
+        this.hersteller = hersteller;
+        this.modell = '';
+        /**
+         * Farbe des Autos
+         * @type {string}
+         */
+        this.farbe = '';
+        this.ps = 1;
+
+        // Methoden
+        this.printInfo = function() {
+            document.write(this.hersteller + ' ' + this.modell + ' (' + this.ps + ')<br />');
+        };
+
+        /**
+         * Berechnet wie weit das Auto gefahren ist (Zeiteinheit 1)
+         *
+         * @returns {number} Strecke
+         */
+        this.fahren = function() {
+            return this.ps * Math.random();
+        };
+
+        this.printFahren = function() {
+            // Aufruf einer anderen Instanz Methode
+            document.write(this.modell + ' ist ' + this.fahren() + ' gefahren<br />');
+        }
+    };
+
+    var corsa = new Auto('Opel');
+
+    // corsa.hersteller = 'Opel';
+    corsa.modell = 'Corsa';
+    corsa.farbe = 'rot';
+    corsa.ps = 40;
+
+    var mazda = new Auto('Mazda');
+
+    // mazda.hersteller = 'Mazda';
+    mazda.modell = 'Mx5';
+    mazda.farbe = 'schwarz';
+    mazda.ps = 120;
+
+    // Ideal für die Auslagerung in eine Methode
+    document.write(corsa.modell + ' ist ' + corsa.fahren() + ' gefahren<br />');
+    document.write(mazda.modell + ' ist ' + mazda.fahren() + ' gefahren<br />');
+
+    corsa.printFahren();
+    mazda.printFahren();
+
+
+
+</script>
+</body>
+</html>

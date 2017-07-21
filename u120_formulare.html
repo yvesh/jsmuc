@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrierung</title>
+    <style>
+        label {
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="errorContainer"></div>
+
+<form action="register.php" id="registerForm" name="registForm" method="post">
+    <div class="form-group">
+        <label for="vorname">Vorname</label>
+        <input id="vorname" name="vorname" type="text" class="required"/>
+    </div>
+    <div class="form-group">
+        <label for="nachname">Nachname</label>
+        <input id="nachname" name="nachname" type="text" class="required"/>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="text" class="required validate-email"/>
+    </div>
+    <div class="form-group">
+        <label for="alter">Alter</label>
+        <input id="alter" name="alter" type="number" value="1" min="1" max="150" class="required validate-number"/>
+    </div>
+    <div class="form-group">
+        <label for="strasse">Strasse</label>
+        <input id="strasse" name="strasse" type="text"/>
+    </div>
+    <div class="form-group">
+        <label for="plz">PLZ</label>
+        <input id="plz" name="plz" type="text" class="required validate-length" min="4" max="8"/>
+    </div>
+    <div class="form-group">
+        <label for="ort">Ort</label>
+        <input id="ort" name="ort" type="text" class="required"/>
+    </div>
+    <div class="form-group">
+        <label for="land">Land</label>
+        <select id="land" name="land" class="required">
+            <option value="">Bitte wählen</option>
+            <option value="deutschland">Deutschland</option>
+            <option value="oesterreich">Österreich</option>
+            <option value="england">England</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" class="required validate-length" min="4"/>
+    </div>
+    <div class="form-group">
+        <label for="passwort">Passwort</label>
+        <input id="passwort" name="passwort" type="password" class="required validate-length" min="8"/>
+    </div>
+    <div class="form-group">
+        <label for="mitgliedschaft">Mitgliedschaft</label>
+        <input id="mitgliedschaft_yes" name="mitgliedschaft" type="radio" value="Y" class="required"/>
+        Ja
+        <input id="mitgliedschaft_no" name="mitgliedschaft" type="radio" value="N" class="required"/>
+        Nein
+    </div>
+    <div class="form-group">
+        <input id="agb" name="agb" type="checkbox" value="Y" checked="checked" class="required"/>
+        <label>Ich akzeptiere die AGB.</label>
+    </div>
+    <div class="form-group">
+        <label for="bemerkung">Bemerkung</label>
+        <textarea id="bemerkung" class="required"></textarea>
+    </div>
+    <div class="form-group">
+        <button id="btnRegister">Registrieren</button>
+    </div>
+</form>
+
+<script>
+    var btnRegister = document.getElementById('btnRegister');
+    var errorContainer = document.getElementById('errorContainer');
+    var emailRegex = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+
+    // Alle Labels auf der Seite
+    var labels = document.getElementsByTagName('label');
+
+    function getLabelText(elementId) {
+        for (var i = 0; i < labels.length; i++) {
+            var label = labels[i];
+
+            if (label.getAttribute('for') === elementId) {
+                label.style.color = 'red';
+
+                return label.innerHTML;
+            }
+        }
+    }
+
+    function addError(labelText) {
+        errorContainer.innerHTML += '<p>Bitte füllen Sie \'' + labelText + '\' aus!</p>';
+    }
+
+    btnRegister.onclick = function (e) {
+        e.preventDefault();
+        errorContainer.innerHTML = '';
+
+        var form = document.getElementById('registerForm');
+        var elemente = form.getElementsByClassName('required');
+
+        // var $elemente = $('#registerForm .required');
+        // var $form = $('#registerForm');
+        var $elemente = $('.required', $form);
+
+
+        var sonderFaelle = {};
+
+        var isValid = true;
+
+        var Error = function(name, errorMessage) {
+            this.name = name;
+            this.errorMessage = errorMessage;
+            this.abort = true;
+        };
+
+        window.validator = {
+            required: function(element) {
+                return false; //
+            };
+
+            /**
+             *
+             * @return true|Regel
+             */
+            length: function(element) {
+                // // var min / max
+
+                return true;
+                //return new Error('length', 'Minimal-Länge nicht gegeben');
+                return [false, 'Minimal-Länge nicht gegeben'];
+            }
+
+            // dynamisch auf die Methoden anhand der Validate klassen zuzugreifen..
+
+        }
+
+        var rules = element.getAttribute('class');
+
+        // validate--
+
+        // schlefe
+        window.validator.required(element);
+
+        window.validator['length'](element)
+
+        Math.random()
+
+
+        for (var i = 0; i < elemente.length; i++) {
+            var element = elemente[i];
+            var type = element.getAttribute('type');
+            var tag = element.tagName.toLowerCase();
+
+            console.log(element.getAttribute('id') + ' is ' + type + ' tag = ' + tag);
+
+            element.onchange = function(e) {
+                validate(this);
+            };
+
+            // Alle inputs haben einen type
+            // Select + text area haben keinen
+
+            /**
+             * Sonderfälle:
+             * - Checkbox (weil mindestens eins gecheckt sein muss)
+             * - Radio  (weil mindestens eins gecheckt sein muss)
+             * - Textarea (innerHTML)
+             */
+
+            var wert = '';
+
+            if (type === 'radio' || type === 'checkbox') {
+
+                if (typeof sonderFaelle[element.getAttribute('name')] == 'undefined') {
+                    sonderFaelle[element.getAttribute('name')] = [];
+                }
+
+                sonderFaelle[element.getAttribute('name')].push(element);
+
+                // sonderFaelle.push(element);
+                // Weil sonst so oft wie es elemente gibt ausgeführt
+                continue;
+            }
+            else if (tag === 'textarea') {
+                wert = element.innerHTML;
+            }
+            else {
+                // Wir gehen davon aus das beim REst der Wert im value ist
+                wert = element.value;
+            }
+
+            if (wert.length < 1) {
+                var labelText = getLabelText(element.getAttribute('id'));
+
+                element.style.border = '1px dotted red';
+
+                addError(labelText);
+                isValid = false;
+            }
+
+            // Mindest- / Maximallänge (validate-length)
+            if (!isValid) {
+                // Abbruch
+                continue;
+            }
+
+            // validate-length
+            if (element.getAttribute('class').indexOf('validate-length') !== -1) { // validateLength
+                var laenge = wert.length;
+
+                var min = element.getAttribute('min');
+
+                if (min && laenge < min) {
+                    var labelText = getLabelText(element.getAttribute('id'));
+                    addError(labelText);
+
+                    isValid = false;
+                }
+
+                var max = element.getAttribute('max');
+
+                if (max && laenge > max) {
+                    var labelText = getLabelText(element.getAttribute('id'));
+                    addError(labelText);
+
+                    isValid = false;
+                }
+            }
+
+            // Email
+            if (element.getAttribute('class').indexOf('validate-email') !== -1) {
+                if (emailRegex.test(wert) === false) {
+                    var labelText = getLabelText(element.getAttribute('id'));
+                    addError(labelText);
+
+                    isValid = false;
+                }
+            }
+
+            if (element.getAttribute('class').indexOf('validate-email') !== -1) {
+                if (isNaN(wert)) {
+                    var labelText = getLabelText(element.getAttribute('id'));
+                    addError(labelText);
+
+                    isValid = false;
+                }
+            }
+
+
+        } // --for
+
+        for (var key in sonderFaelle) {
+            console.log(key);
+
+            var elemente = sonderFaelle[key];
+            var isValid = false;
+
+            for (var i = 0; i < elemente.length; i++) {
+                var element = elemente[i];
+
+                if (element.checked) {
+                    isValid = true;
+                }
+            }
+
+            if (isValid === false) {
+                // Übergeordnete Elemente
+                console.log(element.parentNode);
+                var parent = element.parentNode;
+                var label = parent.getElementsByTagName('label');
+
+                var labelText = label[0].innerHTML;
+
+                addError(labelText);
+            }
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

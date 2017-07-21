@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function test() {
+		// Lokale variable
+		var a = 'test';
+	} // Endet hier
+
+	test();
+
+	// Existiert nicht
+//	console.log(a);
+
+	for (var i = 0; i < 10; i++) {
+		// Keine Lokale Variable
+		var test2 = 43;
+	} // existiert darüber hinaus
+
+	// I und test2 existiert noch immer!!!
+
+	console.log(i);
+	console.log(test2);
+
+	// i = 10
+	for (; i < 10; i++) {
+
+	}
+
+	// BlockScope {} erzugen nur lokale Variablen in FUNKTIONEN
+	// sonst sind es globale
+
+	if (!true) {
+		var test3 = 44;
+	}
+
+	// Kurzform für genau 1 Kommando! Schlechte IDEE!
+	if (true)
+		var bla = 45;
+
+	var test = 32;
+
+
+	var sinn = test == 42 ? true : false;
+
+	if (test == 42) {
+		sinn = true;
+	} else {
+		sinn = false;
+	}
+
+
+	console.log(test3);
+
+	var test43 = test == 42 ? 'Sinn erfühlt' : test == 33 ? 'Auch Sinn' : test == 32 ? 'naja so halb' : 'Nicht der Sinn';
+
+	var cl = 'container';
+
+	//
+	var div = cl == 'container' ?: 'irgendwas'; // ES6
+	var div = cl == 'container' ? 'container' : 'irgendwas';
+
+
+
+</script>
+</body>
+</html>

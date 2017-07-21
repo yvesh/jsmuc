@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="testDiv">
+    Test
+</div>
+
+<script>
+    // Deutlich langsamer ->
+
+    // jQuery Element (jQuery Object)
+    var element = $('#testDiv');
+
+    // $element.style.background = 'red';
+
+    console.log($('#testDiv'));
+
+    // Schneller -> Document Node
+    console.log(document.getElementById('testDiv'));
+
+    var testDiv = document.getElementById('testDiv');
+
+    // Umwandlung in jQuery
+    var $testDiv = $(testDiv);
+
+    console.log($testDiv);
+</script>
+
+
+</body>
+</html>

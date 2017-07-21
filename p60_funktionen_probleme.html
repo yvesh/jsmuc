@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function test(zahl) {
+		// zahl = lokale variable
+		zahl = 43;
+	}
+
+	//
+	var zahl = 42;
+
+	test(zahl);
+
+	document.write(zahl);
+	document.write('<br />');
+
+	// --------------------
+
+	function test2(wort) {
+		wort = 'WElt';
+	}
+
+	var w = 'Hallo';
+
+	test2(w);
+
+	document.write(w);
+	document.write('<br />');
+
+	// -----------
+
+	function test3(namen) {
+		namen[1] = 'IRGENDWAS';
+	}
+
+	var n = ['Maria', 'Bernd', 'Ka'];
+
+	test3(n);
+
+	document.write(n.join(', '));
+	document.write('<br />');
+
+	// ----------
+
+	function test4(datum) {
+		// Das selbe wie DATUM!!!
+
+		// Eine ZUWEISUNG erzeugt eine Referenz
+
+		// Workaround neues Datum aus dem aktuellen Datum von datum
+		var d2 = new Date(datum);
+
+		d2.setMonth(2);
+
+		alert(d2);
+
+	}
+
+	var d = new Date();
+	d.setYear(2016);
+
+	document.write(d);
+	document.write('<br />');
+
+	test4(d);
+
+	document.write(d);
+	document.write('<br />');
+
+</script>
+
+</body>
+</html>

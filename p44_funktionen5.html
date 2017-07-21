@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function getSinn() {
+
+		// es kann immer nur einen RETURN wert geben
+		return 42;
+
+		document.write('irgendwas'); // wird NICHT ausgeführt
+		// Nach einem RETURN wir dnicht mehr ausgeführt
+	}
+
+	var sinn = getSinn();
+
+	document.write(sinn);
+
+	function isSinn() {
+		var zahl = 13;
+
+		// Else ist in Funktionen ÜBERFLÜSSIG! falls eine Rückgabe vorliegt
+		if (zahl === 42) {
+			return true;
+		}
+
+		// Else dank return davor
+		return false;
+	}
+
+	document.write(isSinn());
+
+	function getArray() {
+		return ['Manfred', 'Markus', 'Maria'];
+	}
+
+	function getMultiple() {
+		// Mehrere Dinge können nur als Array (oder Objekt) zurückgegeben werden
+		return [42, 43];
+	}
+
+	function getDate() {
+		var date = new Date();
+
+		return date;
+	}
+
+//	var inner2;
+
+	function outer() {
+		var sinn = 42;
+
+		inner2 = function() {
+			return 42;
+		};
+		// Innerer FUNKTIONEN
+		function inner() {
+			var sinn2 = 43;
+
+			return sinn;
+		} // Ende der gültigkeit von sinn2
+
+
+
+//		console.log(sinn2); // Gibt es hier nicht mehr
+
+		return inner();
+	}
+
+	outer(); // erst nachdem aufruf existiert inner2 im globalen namensraum
+
+	console.log(inner2);
+
+	console.log(inner2());
+
+	// inner();
+
+</script>
+</body>
+</html>

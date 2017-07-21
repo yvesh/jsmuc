@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	for (var i = 0; i < 10; i++) {
+
+		if (i % 2 != 0) {
+			continue;
+		}
+
+		document.write('test gerade ' + i);
+	}
+
+	while (true)
+	{
+		if (prompt('Password') == 'geheim') {
+			break;
+		}
+	}
+
+	document.write('Geheimer Bereich');
+
+	/**
+	 * Break -> Schleife abbrechen
+	 *
+	 * Continue -> Schleife für die nächste Bedingung fortsetzen
+	 *
+	 */
+</script>
+</body>
+</html>

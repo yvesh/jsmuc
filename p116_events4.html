@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="eins">Eins</div>
+<div id="zwei">Zwei</div>
+<div id="drei">Drei</div>
+<div id="vier">Vier</div>
+
+<button class="btn" data-target="eins" data-farbe="yellow">Eins</button>
+<button class="btn" data-target="zwei" data-farbe="orange">Zwei</button>
+<button class="btn" data-target="drei" data-farbe="grey">Drei</button>
+<button class="btn" data-target="vier" data-farbe="blue">Vier</button>
+
+<script>
+    // Array (Bei uns 4 Buttons)
+    var buttons = document.getElementsByClassName('btn');
+
+    for (var i = 0; i < buttons.length; i++) {
+        var btn = buttons[i];
+
+        // Funktional das selbe -> onclick
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var target = this.getAttribute('data-target');
+            var farbe  = this.getAttribute('data-farbe');
+
+            document.getElementById(target).style.background = farbe;
+        });
+    }
+</script>
+</body>
+</html>

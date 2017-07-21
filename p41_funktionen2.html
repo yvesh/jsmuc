@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// Funktioniert
+	printHallo();
+
+	// Funktioniert nicht -> JavaScript FEHLER!
+	// Der gesamte script tag wird nicht weiter ausgeführt
+	// printWelt();
+
+	document.write('test');
+
+	printHallo();
+
+	// Ist x noch nicht definiert
+	document.write(x);
+
+	var x = 42;
+
+	// Reihenfolge unwichtig
+	function printHallo() {
+		document.write('Hallo <br />');
+	}
+
+	// Reihenfolge entscheidend
+	var printWelt = function() {
+		document.write('Welt <br />');
+	}
+</script>
+
+<script>
+	document.write('test');
+</script>
+
+</body>
+</html>

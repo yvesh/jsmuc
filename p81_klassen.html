@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var punkt = {
+        // Instanzvariablen
+        x: 25,
+        y: 42,
+
+        info: function() {
+            document.write('Info')
+        }
+    };
+
+    punkt.x = 44;
+
+    // Klasse in JavaScript (Prototype)
+    var Punkt = function() {
+        // Eigenschaften / Instanzvariablen
+        this.x = 0;
+        this.y = 0;
+        /**
+         *
+         * @type {number}
+         */
+        this.a = 0;
+
+        // Methoden
+        this.printInfo = function() {
+            document.write(this.x + ' <> ' + this.y + ' | ' + this.a);
+        }
+    };
+
+    // new -> Eine neue Instanz (neues Objekt) von Punkt
+    var aPunkt = new Punkt();
+
+    aPunkt.x = 25;
+    aPunkt.y = 42;
+
+    var bPunkt = new Punkt();
+
+    bPunkt.x = 23;
+    bPunkt.y = 55;
+
+
+    // Objekt
+    document.write(typeof aPunkt);
+    document.write('<br />');
+    document.write(typeof bPunkt);
+    document.write('<br />');
+
+    // Function
+    document.write(typeof Punkt);
+    document.write('<br />');
+
+    document.write(aPunkt.x);
+    document.write(bPunkt.x);
+    document.write(bPunkt.a);
+    document.write('<br />');
+
+    aPunkt.printInfo();
+    document.write('<br />');
+    bPunkt.printInfo();
+
+
+
+</script>
+</body>
+</html>

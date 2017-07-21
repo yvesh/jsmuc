@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+<div>
+    Test 2
+</div>
+<div>
+    Test 3
+</div>
+<div>
+    Test 4
+</div>
+
+<script>
+    var $elemente = $('div');
+
+    console.log($elemente);
+
+    /**
+     * Schleife in jQuery ist immer EACH (kein For da kein Array)
+     *
+     * key = Index (0, 1, 2, 3)
+     * element = HTML Node (KEIN jQuery Object)
+     */
+    $elemente.each(function (key, element) {
+        console.log(key);
+        console.log(element);
+
+        // Umwandlung von HTML Node -> jQuery Object
+        var $element = $(element);
+
+        // String
+        var html = $element.html();
+
+        // Bei indexOf brauchen wir ZWINGEND den Vergleich auf -1
+
+        // hallo -> indexOf('h') -> 0
+        // 5 !== -1 -> true
+        // -1 nicht gefunden
+        if (html.indexOf('2') !== -1) {
+            $element.css('background', 'green');
+        } else if (html.indexOf('3') !== -1) {
+            $element.css('background', 'blue');
+        } else if (html.indexOf('4') !== -1) {
+            $element.css('background', 'red');
+        }
+    })
+
+    var test = [2, 3, 4];
+
+    $(test).each(function(key, element){
+        // Schleife.. 2 dann 3 dann 4
+    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="divTest">
+    Test
+</div>
+
+<!--
+Inline JavaScript! = Ganz schlechte IDEE
+<!--onclick="alert('test')" -->
+-->
+<button id="btnTest">Test</button>
+
+<script>
+    var btn = document.getElementById('btnTest');
+
+    // Ändert Text
+    btn.innerHTML = 'Klick mich!';
+
+    // CSS Eigenschaften
+    btn.style.border = '1px solid red';
+
+    // Events
+    btn.onclick = function() {
+        var divTest = document.getElementById('divTest');
+
+        divTest.style.background = 'yellow';
+
+        // Zufalls zahl zwischen 0 - 999.99999
+        var zufall = 1000 * Math.random();
+
+        // Nimmt Komma stellen weg.. >  999.5 -> 1000 -- nicht die EINHEIT vergessen
+        divTest.style.width = Math.round(zufall) + 'px';
+    }
+</script>
+
+</body>
+</html>

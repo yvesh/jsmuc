@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="test42">
+    Test 42
+</div>
+
+<button id="btnChange">Change</button>
+
+<script>
+    $('.test42').mousemove(function(e){
+        e.preventDefault();
+
+        var $test42 = $('.test42');
+
+        var zufall = 1000 * Math.random();
+        $test42.css({'background': 'red'});
+
+        var doSomething = function() {
+            alert('fertig');
+        };
+
+        $test42.animate({'width': zufall + 'px', 'height': (zufall / 2) + 'px'}, 10000, doSomething);
+
+        function addiere() {
+            var ergebnis = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                var obj = arguments[i];
+
+                if (typeof obj === 'object') {
+                    // Property change
+                } else if (typeof obj === 'number') {
+                    // Duration
+                } else if (typeof obj === 'function') {
+                    // Callback
+                }
+
+                ergebnis += obj;
+            }
+
+            return ergebnis;
+        }
+
+        addiere(23);
+
+        addiere(21, 21);
+
+        addiere(10, 11, 20);
+
+        // Wird direkt ausgeführt (JavaScript ist asynchron)
+        // alert('test')
+    });
+</script>
+
+</body>
+</html>

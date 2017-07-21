@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="iso-8859-1">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// 0    1 = 3    2 = 4
+	var zahlen = [2, 3, 4];
+
+	document.write(zahlen[1] + '<br />');
+
+	zahlen[1] = 5;
+
+	document.write(zahlen[1] + ' <br />');
+
+	// Fügen wir eine neue Zahl ein
+	// Index 3 (4te Zahl)
+	zahlen.push(8);
+
+	document.write(zahlen[3] + '<br />');
+
+	document.write(zahlen.length);
+
+	for (var i = 0; i < zahlen.length; i++) {
+		document.write(zahlen[i] + '<br />');
+	}
+
+	document.write('Letzte Zahl: ' + zahlen[zahlen.length - 1]);
+
+	document.write('<hr />');
+
+	zahlen.sort().reverse();
+
+	document.write(zahlen.join('<br />'));
+
+	document.write('<hr />');
+
+	// Sortiert die Zahlen
+	zahlen.sort();
+
+	document.write(zahlen.join('<br />'));
+	document.write('<hr />');
+
+	var namen = ['Maria', 'alexander', 'Benjamin', '42', 'Äua', '!test'];
+
+	document.write(namen.sort().join(', '));
+	document.write('<hr />');
+
+	// Entfernt das erste Element aus dem Array und gibt es zurück
+	document.write(namen.shift());
+	document.write('<hr />');
+	document.write(namen);
+	document.write('<hr />');
+
+	document.write(namen.pop());
+	document.write('<hr />');
+	document.write(namen);
+	document.write('<hr />');
+
+	var mehrdimensional = [[23, 24], [1, 3], [4, [5, 7, [42]]]];
+
+	document.write(mehrdimensional[2][1][2][0]);
+
+	var kunde  = [['Maria', 42], ['Peter', 18]];
+
+	// JavaScript hat keine assoziativen Arrays
+	// $test = ['name' => 'Maria'];
+	// $test['name']
+
+
+</script>
+</body>
+</html>

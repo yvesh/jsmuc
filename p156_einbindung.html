@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+
+<script>
+    $ = jQuery;
+
+    function(){
+        // Für diese Funktion jQuery dem Dollar zu
+        $ = jQuery;
+
+        $('test').html('Test text')
+
+
+    } // Ab hier ist $ != jQuery
+
+    (function($) {
+        $('test').html('test 2');
+    })(jQuery);
+
+    jQuery('document').ready(function($){
+        $('test').html('test 2');
+    });
+
+    window.onload = function() {
+        alert('sobald geladen');
+    }
+
+    $('#test').makeGreen();
+
+</script>
+
+</body>
+</html>

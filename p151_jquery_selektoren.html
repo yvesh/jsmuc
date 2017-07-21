@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div class="test">
+    <div class="test2">
+        <p>
+            Hallo Welt
+        </p>
+        <p>
+            Guten Morgen
+
+            <input type="text" name="test" />
+        </p>
+    </div>
+</div>
+
+<script>
+    /*var test2Divs = document.getElementsByClassName('test2');
+
+    for (var i = 0; i < test2Divs.length; i++) {
+        var obj = test2Divs[i];
+
+        var ps = obj.getElementsByTagName('p');
+
+        for (var j = 0; j < 1; j++) {
+            var obj = ps[j];
+
+            obj.style.color = 'red';
+        }
+    }*/
+
+    // Suche das erste Div mit der Klasse .test2, darin dann die p Elemente und nehme davon das Erste
+    $('.test2:first p:last').css('color', 'red');
+
+    // $('input[name="test"]');
+
+    $('div').css('background', 'blue').css('border', '1px solid red');
+
+    $('div').css({
+        background: 'yellow',
+        border: 'green'
+    })
+</script>
+
+</body>
+</html>

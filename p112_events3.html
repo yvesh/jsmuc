@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="ausgabe">
+</div>
+
+<a href="http://www.muenchenticket.de" id="linkMuenchenticket">Klick mich</a>
+
+<script>
+    var link = document.getElementById('linkMuenchenticket');
+
+    document.write(typeof console);
+
+    link.onclick = function(e) {
+        e.preventDefault();
+
+        console.log('test');
+
+        document.getElementById('ausgabe').innerHTML = 'test42';
+
+        // HIER IST unser problem
+        // document.write('test 42');
+        // Irgendwas stimmt hier nicht?!
+        /*e.preventDefault();
+
+        console && console.log('Preventing default');
+
+        document.write('Sie werden weitergeleitet in 10 Sekunden');*/
+
+        // Ziel
+        setTimeout(function(){
+            console && console.log('Weiterleitung jetzt');
+            window.location.href = 'http://www.muenchenticket.de';
+        }, 3000)
+    }
+</script>
+
+</body>
+</html>

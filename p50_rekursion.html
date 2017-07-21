@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// Wie oft lässt sich 1000 durch 3 teilen bis die Zahl kleiner 10 ist
+	var counter = 0;
+
+	function teilen(zahl) {
+		if (zahl < 10) {
+			// Hier ist unser ENDE
+			return zahl;
+		}
+
+		counter++;
+		zahl = zahl / 3;
+
+		// Das ruft nur wieder AUF!
+		return teilen(zahl);
+	}
+
+	var erg = teilen(1000);
+
+	document.write(erg + ' nach ' + counter);
+</script>
+
+</body>
+</html>

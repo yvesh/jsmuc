@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Strings</title>
+</head>
+<body>
+<script>
+	var hallo = 'Hallo Welt';
+
+	document.write(hallo.length);
+	document.write('<br />');
+
+	document.write(hallo.toUpperCase());
+	document.write('<br />');
+
+	// Dauerhaftes übernehemen
+	// hallo = hallo.toUpperCase();
+
+	document.write(hallo);
+	document.write('<br />');
+
+	// Zum ersetzen von Inhalten -> IST CASE SENSITIVE
+	document.write(hallo.replace('Hallo', 'bye'));
+	document.write('<br />');
+
+	document.write(hallo);
+	document.write('<br />');
+
+	// Durchsucht eine Zeichenkette nach etwas - wenn etwas gefunden wird gibt es die Position zurück
+	// Sonst -1
+	document.write(hallo.indexOf('z'));
+	document.write('<br />');
+
+	// Zeichen an der Position X
+	document.write(hallo.charAt(4));
+	document.write('<br />');
+	document.write('<br />');
+
+
+
+	// Palindrome -> Wörter vorwärts rückwärts gleich sind
+	// Anna, Rentner, Reliefpfeiler
+	var wort = 'anna';
+	var wort2 = 'hallo'; // ollah
+
+	var umgekehrt = '';
+
+	for (var i = wort2.length - 1; i >= 0; i--) {
+		umgekehrt = umgekehrt + wort2.charAt(i);
+	}
+
+	document.write(umgekehrt);
+
+	var zufall = Math.random(); // 0.00 0.9999999
+
+	document.write(zufall);
+
+	if (zufall < 0.42) {
+		document.write('Gewonnen');
+	}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="test">
+    Test
+</div>
+
+<button id="btnAjax">Ajax</button>
+
+<script>
+    // Asynchrones JavaScript
+    $('#btnAjax').click(function (e) {
+        e.preventDefault();
+
+        // Ajax
+        /**
+         * Wir klicken den Button
+         * Fordert der Browser im Hintergrund
+         * den Inhalt der Seite sample..html
+         * an, läd ihn nach und fügt ihn dem Div test zu
+         */
+        $.get('sample-content42.html')
+            .done(function(data){
+                // Wenn erfolgreich ausgeführt
+            $('#test').append(data);
+            }).fail(function(status, xhr, errormessage){
+                // Wenn ein fehler aufgetreten
+                console.log(status);
+                console.log(xhr);
+                console.log(errormessage);
+                alert('fehler');
+        });
+    });
+</script>
+
+</body>
+</html>

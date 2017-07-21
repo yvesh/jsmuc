@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function newLine() {
+        document.write('<br />');
+    }
+
+    // Objekt Erzeugung
+    var maria = {
+        // Instanzvariablen / Objektvariablen
+        vorname: 'Maria',
+        nachname: 'Schmidt',
+        geburtsdatum: new Date(),
+
+        // Methode vs Funktion?
+        // Methode weil in einem Objekt (Maria)
+        printInfo: function() {
+            // var vorname = 'test';
+
+            // this -> Bezieht sich auf das Objekt (Maria)
+            document.write(this.vorname + ' ' + this.nachname);
+        },
+
+        printNachname: function() {
+            document.write(this.nachname);
+        }
+    };
+
+    document.write(maria.vorname);
+    newLine();
+
+    var attribut = 'nachname';
+
+    // Zugriff über die Array Syntax
+    document.write(maria[attribut]); // Dynamischer Zugriff auf Instanzvariablen
+    document.write('<br />');
+
+    // Aufruf einer Methode des Objekts Maria
+    maria.printInfo();
+
+    /**
+     * In einem Objekt können wir also:
+     *
+     * - Variablen (jedwegen Datentyps)
+     * - Methoden hinterlegen
+     * - mit THIS greifen wir auf die Variablen des Objekts aus einer Methode zu
+     * - Variablen und Methoden werden statt mit einem = mit einem : zugewisen
+     * - Statt des Semikolons am Ende benutzen wir ein Komma
+     */
+
+    var bernd = {
+        // Instanzvariablen / Objektvariablen
+        vorname: 'Bernd',
+        nachname: 'Huber',
+        geburtsdatum: new Date(),
+
+        // Methode vs Funktion?
+        // Methode weil in einem Objekt (Maria)
+        printInfo: function() {
+            // var vorname = 'test';
+
+            // this -> Bezieht sich auf das Objekt (Maria)
+            document.write(this.vorname + ' ' + this.nachname);
+        },
+
+        printNachname: function() {
+            document.write(this.nachname);
+        }
+    };
+    document.write('<br />');
+
+    bernd.printInfo();
+</script>
+</body>
+</html>

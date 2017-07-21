@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	// A-Z, a-z, 0-9 ' '
+	var wort = "JavaScript macht Spaß!!!!";
+	var code = 42;
+	var crypt = '';
+	var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ';
+
+	// hallo -> kdoor
+
+	/**
+	 * Schritte:
+	 *
+	 * - Wort Buchstabe für Buchstabe einlesen
+	 *      - Schleife
+	 *      - wort.length
+	 *      - charAt(i)
+	 * - Position des Buchstaben im Alphabet feststellen
+	 *      - indexOf
+	 * - Position um code erhöhen
+	 * - Neuen Buchstaben im Alphabet finden
+	 * - In einer Variable speichern
+	 * - Ergebnis ausgeben
+	 */
+
+	for (var i = 0; i < wort.length; i++) {
+		// Buchstabe des Wortes
+		var buchstabe = wort.charAt(i);
+
+		// Position des Buchstabens im Alphabet
+		var position = abc.indexOf(buchstabe);
+
+		if (position === -1) {
+			// Fehler -> WEIL BUCHSTABE NICHT GEFUNDEN
+		}
+
+		// Position um Code / Chiffre erhöhen
+		position = position + code;
+
+		// Problem: Position kann größer sein als das Alphabet
+		if (position > abc.length - 1) {
+			position = position - abc.length;
+		}
+
+		// Neuen Buchstaben finden
+		var neuBuchstabe = abc.charAt(position);
+
+		crypt += neuBuchstabe;
+	}
+
+	document.write(crypt);
+
+	// https://pastebin.com/LcXqNiNz
+</script>
+</body>
+</html>

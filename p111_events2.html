@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #animate {
+            width: 600px;
+            height: 300px;
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<div id="animate">
+    Test
+</div>
+
+<script>
+    var animate = document.getElementById('animate');
+
+    animate.onmouseup = function() {
+        // Width + Height Zufällig
+        var newWidth = Math.random() * 1000;
+        var newHeight = Math.random() * 800;
+
+        animate.style.width = newWidth + 'px';
+        animate.style.height = newHeight + 'px';
+    };
+
+    /**
+     * onmouseover: Änderung nur wenn man wieder rein geht
+     * onmousemove: Änderung bei jeder Mausbewegung
+     * onmouseout:  Sobald man ein Element verlässt
+     * onmousedown: Sobald man die Maus klickt
+     * onmouseup:   Sobald man die Maus klickt und innerhalb des Elements los lässt
+     */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var jsonString = '{"hersteller":"Opel","modell":"Corsa","ps":40}';
+
+    var corsa = JSON.parse(jsonString);
+
+    corsa.prototype.fahren = function() {
+        return this.ps * Math.random();
+    };
+
+    document.write(corsa.hersteller);
+</script>
+
+</body>
+</html>

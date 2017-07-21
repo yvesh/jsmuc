@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test3 {
+            background: dodgerblue;
+        }
+
+        div {
+            background: green;
+        }
+
+        html body div#test-div {
+            background: indianred;
+        }
+
+        #test4.test3 {
+            background: rosybrown;
+        }
+
+        #test4 {
+            background: deeppink;
+        }
+
+        #test5 {
+            background: black;
+        }
+
+        #test6 .test3 {
+            /* Prio = 3 */
+            background: orange;
+        }
+
+        /* style attribut hat eine sehr hohe Priorität (99) */
+
+        /**
+         * Klasse hat eine höherere Priorität als ein Tag
+         * Eine ID hat eine höhere Priorität als eine Klasse
+         * ID + Klasse kombiniert = höhere Priorität als eine Id
+         * style hat eine deutlich höhere Priorität als eine Id
+         * important hat eine höhere Priorität als style
+         *
+         * Tag = 1, Klasse = 2, Id = 8, style = 99, important = 999   -> Id.Klasse = 5
+
+         * Bei gleicher Priorität gilt das was später kommt (reihenfolge)
+         */
+    </style>
+</head>
+<body>
+<div>
+    Test 2
+</div>
+
+<div id="test-div" style="background: yellow">
+    Test
+</div>
+
+<div class="test3">
+    Test 3
+</div>
+
+<div class="test3" id="test4">
+    Test 4
+</div>
+
+<div id="test6">
+    <div id="test5" class="test3">
+        Test 5
+    </div>
+</div>
+
+
+<script>
+    var testDiv = document.getElementById('test5');
+
+    // Was ist testDiv?
+
+    // DocumentNodeObject
+    document.write(typeof testDiv);
+
+    console.log(testDiv);
+
+    // Farbänderung in JavaScript
+    testDiv.style.background = 'grey';
+</script>
+
+
+</body>
+</html>

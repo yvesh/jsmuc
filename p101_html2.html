@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test-div" countdown="42">
+    <strong>Test</strong>
+</div>
+
+<laura>
+    Test Laura
+</laura>
+
+<div>
+    test2
+</div>
+
+<script>
+    var testDiv = document.getElementById('test-div');
+
+    // Inhalt eines Elements auslesen
+    var text = testDiv.innerHTML;
+
+    console.log(text);
+
+    // Bestehenden Inhalt überschreiben
+    testDiv.innerHTML = '<h3>Durch JavaScript ersetzt</h3>';
+
+    // An bestehenden inhalt anhängen
+    testDiv.innerHTML += '<h3>Durch JavaScript ersetzt</h3>';
+
+    // Vor bestehenden Inahlt
+    testDiv.innerHTML = 'Neuer Text <br />' + testDiv.innerHTML;
+
+    // Zugriff au Attribute
+    console.log(testDiv.getAttribute('countdown'));
+</script>
+</body>
+</html>

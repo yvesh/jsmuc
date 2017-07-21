@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	/**
+	 *  Primzahlen
+	 *
+	 *  - Nur durch sich selbst und 1 teilbar
+	 *
+	 *  3,5,7,11,13 ..
+	 */
+
+	var zahl = 3;
+	var found = 0;
+
+	while (found < 1000) {
+		var isPrimzahl = true;
+
+		for (var i = 2; i < zahl; i++) {
+			if (zahl % i == 0) {
+				// Keine Primzahl
+				isPrimzahl = false;
+				break;
+			}
+		}
+
+		if (isPrimzahl) {
+			found++;
+			document.write(zahl + ', ');
+
+			if (found % 30 == 0) {
+				document.write('<br />');
+			}
+		}
+
+		zahl++;
+	}
+</script>
+
+</body>
+</html>
